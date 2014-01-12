@@ -7,7 +7,7 @@
 \pgfplotsset{compat=1.5}
 \usetheme{Warsaw}
 
-  \setbeamercovered{transparent}
+\setbeamercovered{transparent}
 
 \author {Karol Olko, Tomasz Pasternak}
 \title {Spiking Neural Networks}
@@ -31,7 +31,7 @@
     \item<2-> O stanie wyjściowym neuronu może decydować kolejność impulsów
     \item<3-> Wierniejsze odwzorowanie biologicznych NN
     \item<4-> Wymagana większa moc obliczeniowa
-      \end{itemize}
+    \end{itemize}
   \end{block}
 \end{frame}
 \begin{frame}
@@ -47,7 +47,34 @@
   \end{center}
   Neuron posiadający neurony wejściowe wysyłające takie sygnały może zachować się inaczej, gdy przyjmiemy model impulsowy.
 \end{frame}
-\section{Modele impulsowe}
+\section{Model impulsowy}
+\begin{frame}
+  \begin{block}{Model LIF (Leaky Integrate-and-Fire)}
+    $$ C\frac{\mathrm{d}u}{\mathrm{d}t} (t) = -\frac1Ru(t)+\left(i_0(t) + \sum{w_ji_j(t)}\right)$$ 
+    $u(t)$ -- zmienna stanu \\ 
+    $C$ -- pojemność membrany \\
+    $R$ -- rezystancja wejściowa\\
+    $i_0(t)$ -- zewnętrzny prąd \\
+    $i_j(t)$ -- wejście z $j$-tego połączenia synaptycznego\\
+    $w_j$ -- waga $j$-tej synapsy
+  \end{block}
+\end{frame}
+\section{Topologie}
+\subsection{Feedforward}
+\subsection{Recurrent}
+\subsection{Hybrid}
+
+\begin{frame}
+\end{frame}
 \section{Kodowanie informacji}
+\subsection{ Time-to-first spike}
+\begin{frame}
+\end{frame}
+\subsection{ Rank-order coding}
+\subsection{ Latency code}
+\subsection{ Resonant burst model}
+\subsection{ Coding by synchrony}
+\subsection{ Phase coding}
+
 \section{Uczenie}
 \end{document}
