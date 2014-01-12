@@ -1,20 +1,53 @@
 \documentclass{beamer}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplotstable}
+\usepackage{pgfplots}
+\usetikzlibrary{calc}
+\pgfplotsset{compat=1.5}
 \usetheme{Warsaw}
+
+  \setbeamercovered{transparent}
 
 \author {Karol Olko, Tomasz Pasternak}
 \title {Spiking Neural Networks}
 \begin{document}
 \frame{\titlepage}
+\frame{\tableofcontents}
+\section{Wprowadzenie}
 
-  \begin{frame}
-    \frametitle{Slide}
-    \begin{block}{blocktitle}
-sda
-\end{block}
-  \end{frame}
-  \begin{frame}
-    \frametitle{Slide}
-    \framesubtitle{Slide}
-
-  \end{frame}
+\begin{frame}
+  \begin{block}{Podejście tradycyjne}
+    \begin{itemize}
+    \item Bierzemy pod uwagę jedynie częstotliwość wysyłania impulsów jako nośnik informacji między neuronami
+    \item Duże straty informacji
+    \end{itemize}
+  \end{block}
+\end{frame}
+\begin{frame}
+  \begin{block}{Podejście impulsowe}
+    \begin{itemize}
+    \item<1-> Czas wyjścia każdego impulsu jest brany pod uwagę
+    \item<2-> O stanie wyjściowym neuronu może decydować kolejność impulsów
+    \item<3-> Wierniejsze odwzorowanie biologicznych NN
+    \item<4-> Wymagana większa moc obliczeniowa
+      \end{itemize}
+  \end{block}
+\end{frame}
+\begin{frame}
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[name = neuron1, title=Neuron 1, height=3cm, width=10cm]
+        \addplot[blue] table {neuron1.dat};
+      \end{axis}
+      \begin{axis}[name = neuron2, title=Neuron 2, at={($(neuron1.south west)-(0,2cm)$)}, height=3cm, width=10cm, anchor=west]
+        \addplot[blue] table {neuron2.dat};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+  Neuron posiadający neurony wejściowe wysyłające takie sygnały może zachować się inaczej, gdy przyjmiemy model impulsowy.
+\end{frame}
+\section{Modele impulsowe}
+\section{Kodowanie informacji}
+\section{Uczenie}
 \end{document}
