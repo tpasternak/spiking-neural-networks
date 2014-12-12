@@ -1,0 +1,134 @@
+\documentclass[11pt]{article}
+\usepackage{tocloft}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{subfig}
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+\usepackage{epstopdf}
+\usepackage{amsmath, mathtools}
+
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\usepackage{geometry}
+\geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+
+\usepackage[
+        unicode=true,
+        bookmarks=true,
+        bookmarksnumbered=false,
+        bookmarksopen=false,
+        breaklinks=false,
+        pdfborder={0 0 1},
+        backref=false,
+        colorlinks=false]{hyperref}
+		
+\hypersetup{
+        pdftitle={Impulsowe sieci neuronowe - teoria i zastosowania},
+        pdfauthor={Tomasz Pasternak, Karol Olko, Rafał Kułaga, Michał Jędros}}
+
+\linespread{1.15}
+\lstloadlanguages{TeX}
+
+\usepackage{titlesec}
+\usepackage{titletoc}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\begin{document}
+
+\author{Tomasz Pasternak, \\
+		Karol Olko, \\
+		Rafał Kułaga, \\
+		Michał Jędros}
+\title{\Huge{Impulsowe sieci neuronowe} \\ \vspace{0.2cm} \small{Teoria i zastosowania}}
+
+\maketitle
+\newpage{}
+\tableofcontents{}
+\newpage{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage{}
+
+\section{Wprowadzenie}
+\input{wstep}
+\section{Topologie}
+\input{topologie}
+\section{Uczenie}
+\input{uczenie}
+\section{SNN a kora wzrokowa}
+\input{korawzrokowa}
+\section{Zastosowania SNN}
+
+Zastosowania impulsowych sieci neuronowych zależą od zastosowanych metod uczenia. Jak zostało już napisane, wyróżnia się trzy podstawowe rodzaje uczenia sieci tego typu: uczenie z nauczycielem (\emph{supervised learning}), uczenie bez nauczyciela (\emph{unsupervised learning}) oraz uczenie metodą reinforcement learning. 
+
+W przypadku uczenia bez nauczyciela, do głównych zastosowań sieci impulsowych, opisywanych w pracy~\cite{Ponulak2011} należą:
+
+\begin{itemize}
+
+\item Klasyfikacja danych
+\item Rozpoznawanie obrazów, zapachów
+\item Nawigacja przestrzenna, tworzenia map środowiska i jego eksploracja
+\item Samoorganizujące się mapy (\emph{Self Organizing Maps})
+\item Rozpoznawanie szeregów czasowych
+\item Pamięci asocjacyjne
+\item Wyznaczanie głównych składowych ciągów impulsów
+
+\end{itemize}
+
+Impulsowe sieci neuronowe uczone z nauczycielem znajdują zastosowanie w:
+
+\begin{itemize}
+
+\item Sterowaniu silnikami (serwomechanizmy) i planowaniu ruchu
+\item Klasyfikacji danych
+\item Podejmowanie decyzji, szczególnie w kontekście rynków finansowych
+
+\end{itemize}
+
+Sieci uczone metodami reinforcement learning mogą zostać użyte do:
+
+\begin{itemize}
+
+\item Nawigacji przestrzennej i planowania ruchu
+\item Podejmowania decyzji
+
+\end{itemize}
+
+Wybrane aplikacje opisane zostały dokładniej w prezentacji. 
+
+
+\subsection{SpiNNaker -- neuromorficzny superkomputer}
+
+Symulacja złożonych sieci impulsowych w czasie rzeczywistym wymaga znacznej mocy obliczeniowej, wielokrotnie przekraczającej możliwości współczesnych komputerów. Jednym z projektów mających na celu implementację bardzo złożonych sieci impulsowych (o liczbie neuronów wynoszącej około 1\% wszystkich neuronów zawartych w ludzkim mózgu) jest SpiNNaker, prowadzony na Manchester University w Wielkiej Brytanii. System ten ma stać się docelowo platformą do badania bardzo wielu algorytmów oraz typów sieci, co będzie możliwe ze względu na jego rekonfigurowalną strukturę.
+
+Po stronie sprzętowej system (w ostatecznej wersji) składać się będzie z 65536 identycznych, 18 rdzeniowych procesorów. Każdy rdzeń ARM968 taktowany jest zegarem 200 MHz. Procesory te wytwarzane są w stosunkowo starym procesie technologicznych 130 nm, co wpływa niekorzystnie na ich pobór energii. Możliwości pojedynczego rdzenia w zakresie symulacji sieci neuronowych nie są wielkie -- jest on w stanie modelować działanie około 1000 neuronów. Jeżeli jednak uwzględni się ogromną ich liczbę w całym systemie (1178648), możliwe stanie się wykonywanie nawet bardzo złożonych sieci w czasie rzeczywistym. 
+
+Komunikacja pomiędzy rdzeniami realizowana jest w sposób w pełni cyfrowy. Dane przesyłane są w 40 lub 72 bitowych pakietach, w których aż 32 bity użyte są do określenia neuronu źródłowego. Każdy z procesorów przyłączony jest do sześciu sąsiednich układów, jednak możliwa jest realizacja dowolnych połączeń na poziomie sieci neuronowej.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage{}
+
+\listoffigures
+
+\newpage{}
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{../bibliografia}
+
+\end{document}
+
